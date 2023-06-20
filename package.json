@@ -1,6 +1,6 @@
 {
   "name": "spydra-fabric-contract-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "Spydra",
   "main": "lib/spydra-contract.js",
   "types": "lib/spydra-contract.d.ts",
