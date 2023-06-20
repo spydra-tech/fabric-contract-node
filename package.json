@@ -1,0 +1,50 @@
+{
+  "name": "spydra-fabric-contract-node",
+  "version": "1.0.0",
+  "publisher": "Spydra",
+  "main": "lib/spydra-contract.js",
+  "types": "lib/spydra-contract.d.ts",
+  "dependencies": {
+    "fabric-common": "^2.2.18",
+    "fabric-contract-api": "^2.5.2"
+  },
+  "author": "Spydra",
+  "license": "Apache-2.0",
+  "description": "Spydra Base Contract for Hyperledger Fabric that provides advanced functionalities for any Chaincode",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.1.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "homepage": "https://www.spydra.app/?utm_source=github&utm_medium=fabric_contract",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spydra-tech/fabric-contract-node"
+  },
+  "bugs": {
+    "url": "https://github.com/spydra-tech/fabric-contract-node/issues",
+    "email": "info@spydra.app"
+  },
+  "keywords": [
+    "Hyperledger Fabric",
+    "Hyperledger",
+    "Fabric",
+    "Blockchain",
+    "Distributed Ledger",
+    "Chaincode",
+    "Smart Contract",
+    "DLT"
+  ]
+}
