@@ -12,18 +12,21 @@ class SpydraContract extends Contract {
   // ReadDataFromQueryString executes a Couch DB rich query and provides paginated response.
   // The function accepts a Couch DB rich query string, the page size for the results and a bookmark.
   public async ReadDataFromQueryString(ctx: Context, queryString: string, pageSize: number, bookmark: string) {
-    const logger = Utils.getLogger('BaseContract');
+    const logger = Utils.getLogger('SpydraContract');
 
     const queryData = [];
     const response: any = {};
     try {
-      const queryResponse: any = await ctx.stub.getQueryResultWithPagination(queryString, pageSize, bookmark);
-      for await (const queryRecord of queryResponse) queryData.push(queryRecord.value.toString('utf8'));
+      const queryResponse: any = ctx.stub.getQueryResultWithPagination(queryString, pageSize, bookmark);
+      for await (const queryRecord of queryResponse) {
+        queryData.push(queryRecord.value.toString('utf8'));
+      }
 
       response.records = queryData;
-      response.count = queryResponse.metadata.fetchedRecordsCount;
-      if (queryResponse.metadata.fetchedRecordsCount >= pageSize) {
-        response.bookmark = queryResponse.metadata.bookmark;
+      const metadata = (await queryResponse).metadata;
+      response.count = metadata.fetchedRecordsCount;
+      if (metadata.fetchedRecordsCount >= pageSize) {
+        response.bookmark = metadata.bookmark;
       }
     } catch (err) {
       logger.error(`Query failed. Error: ${err}`);
