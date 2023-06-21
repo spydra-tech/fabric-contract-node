@@ -19,7 +19,8 @@ class SpydraContract extends Contract {
     try {
       const queryResponse: any = ctx.stub.getQueryResultWithPagination(queryString, pageSize, bookmark);
       for await (const queryRecord of queryResponse) {
-        queryData.push(queryRecord.value.toString('utf8'));
+        const recordString = queryRecord.value.toString('utf8');
+        queryData.push(JSON.parse(recordString));
       }
 
       response.records = queryData;

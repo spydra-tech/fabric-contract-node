@@ -24,7 +24,7 @@ The Spydra Hyperledger Fabric Base Contract has various utility methods which pr
 	    
     }
     ```
-3. Export the SpydraContract as one of the Smart contracts in index.js
+3. Export the SpydraContract as one of the Smart contracts in index.js.
     ```javascript
         module.exports.contracts = [MyCustomContract, SpydraContract];
     ```
